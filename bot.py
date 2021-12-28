@@ -11,11 +11,12 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 botname = os.getenv('name')
+file = os.getenv('truthfile')
 # import Util
 # from discord.ext import commands, tasks
 
 
-client = commands.Bot(command_prefix="$")
+client = commands.Bot(command_prefix=".")
 status = cycle(["Lemme give you some nasty dares", "Slurpy truths eh ?", "Don't have the courage ?","You are too weak to play"])
 # Bot's Ready
 @client.event
@@ -103,7 +104,7 @@ async def reload(ctx, extension):
         embed_reload = discord.Embed(description = f"Reloaded **{extension}**",colour=discord.Color.from_rgb(224,47,74))
         await ctx.send(embed=embed_reload)
     except Exception as error:
-        embed_reload_error = discord.Embed(description = f"Failed to reload cog **{extension}**. Reason: **{error}**",colour=discord.Color.from_rgb(183,142,255))
+        embed_reload_error = discord.Embed(description = f"Failed to reload cog **{extension}**. Reason: **{error}**",colour=discord.Color.from_rgb(224,47,74))
         await ctx.send(embed=embed_reload_error)
 @reload.error
 async def reload_error(ctx, error):
